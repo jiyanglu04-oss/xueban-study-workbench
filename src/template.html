@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="学伴 · 课程表 / 待办 / 消息中心 / 四六级备考，一站式聚合学习平台信息">
+<title>学伴</title>
+<style>
+/*__CSS__*/
+</style>
+</head>
+<body>
+
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 5.6A2.6 2.6 0 0 1 6.6 3H20v15.4H6.6A2.6 2.6 0 0 0 4 21z"/><path d="M4 18.4h16"/>
+          <path d="M9.4 8.4l2.6 2.6 4-4.2"/>
+        </svg>
+      </div>
+      <div class="brand-txt">
+        <b>学伴</b>
+        <span>STUDY DASHBOARD</span>
+      </div>
+    </div>
+
+    <nav class="nav" id="nav"></nav>
+
+    <div class="nav-foot" id="navFoot" title="点击查看同步方法">
+      <span class="sync-dot bad" id="syncDot"></span><span class="txt" id="syncNote">尚未同步</span>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <div class="topbar-l" id="topL"></div>
+      <div class="topbar-r" id="topR"></div>
+    </div>
+    <div id="view"></div>
+  </main>
+</div>
+
+<div class="fab">
+  <button id="fabTodo" title="新建待办　快捷键 N">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 5.2v13.6M5.2 12h13.6"/>
+    </svg>
+    <span>新建待办</span>
+  </button>
+  <button class="alt" id="fabCourse" title="新增课程　快捷键 T">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 5.6A2.6 2.6 0 0 1 6.6 3H20v15.4H6.6A2.6 2.6 0 0 0 4 21z"/><path d="M4 18.4h16"/><path d="M12 7.6v6M9 10.6h6"/>
+    </svg>
+    <span>新增课程</span>
+  </button>
+</div>
+
+<nav class="mobile-nav" id="mobileNav" aria-label="移动端主导航"></nav>
+
+<div class="toasts" id="toasts"></div>
+
+<!-- 同步数据槽：脚本会把抓取结果写入这里 -->
+<script id="sync-payload" type="application/json">
+{"syncedAt": null, "note": "", "courses": [], "messages": [], "todos": []}
+</script>
+
+<script>
+/*__JS__*/
+</script>
+</body>
+</html>

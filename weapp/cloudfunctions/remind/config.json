@@ -1,0 +1,9 @@
+{
+  "triggers": [
+    {
+      "name": "dailyDigest",
+      "type": "timer",
+      "config": "0 30 20 * * * *"
+    }
+  ]
+}

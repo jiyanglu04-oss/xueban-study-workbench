@@ -1,0 +1,73 @@
+<!-- 首页：今天和最近要做的待办。没有花哨的东西，信息密度优先。 -->
+<view class="wrap">
+
+  <!-- 云开发环境还没配好时不显示半截数据，直接告诉用户缺什么 -->
+  <view wx:if="{{needEnv}}" class="card">
+    <view class="card-title">还差最后一步</view>
+    <view class="hint">
+      小程序还没连上云端。打开 <text class="mono">miniprogram/config.js</text>，
+      把云开发环境 ID 填到 <text class="mono">ENV_ID</text> 里，保存后重新编译即可。
+    </view>
+  </view>
+
+  <block wx:if="{{ready}}">
+
+    <!-- 顶部状态条：待办数 + 最近同步时间。同步太久没更新要显式提醒 -->
+    <view class="card status">
+      <view class="row">
+        <view>
+          <view class="big-num">{{total}}</view>
+          <view class="hint">条待办没完成</view>
+        </view>
+        <view class="right-col">
+          <view class="hint">最近同步 {{lastSyncText}}</view>
+          <view wx:if="{{lastSyncStale}}" class="hint warn-text">电脑超过 36 小时没同步了</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 通知入口：待办之外，用户还想知道「有没有新消息」 -->
+    <view class="card entry" bindtap="onGoNotice">
+      <view class="entry-b">
+        <view class="entry-t">新通知 {{unreadMsgs}} 条</view>
+        <view class="hint">学习平台的公告、课件、课堂互动都在这</view>
+      </view>
+      <view class="arrow">›</view>
+    </view>
+
+    <!-- 额度不足才提示，够用时不占地方 -->
+    <view wx:if="{{quotaLow}}" class="card alert-card">
+      <view class="card-title">提醒额度只剩 {{quota}} 条</view>
+      <view class="hint">
+        微信规定个人小程序只能用「一次性订阅」——你点一次「允许」只能收到一条提醒。
+        点下面的按钮补一下额度，大概能撑几天。
+      </view>
+      <button class="btn btn-primary mt" bindtap="onTapSubscribe">补充提醒额度</button>
+    </view>
+
+    <!-- 待办分组：已逾期 / 今天 / 接下来 -->
+    <block wx:for="{{groups}}" wx:key="label" wx:for-item="g">
+      <view class="group-label tone-{{g.tone}}">{{g.label}} · {{g.items.length}}</view>
+      <view class="card todo" wx:for="{{g.items}}" wx:key="id" wx:for-item="t">
+        <view class="todo-head">
+          <view class="todo-title">{{t.title}}</view>
+          <view class="tick" bindtap="onToggleDone" data-docid="{{t._id}}" data-id="{{t.id}}">完成</view>
+        </view>
+        <view class="todo-meta">
+          <text class="due tone-{{t.dueTone}}">{{t.dueText}}</text>
+          <text wx:if="{{t.course}}" class="sep">·</text>
+          <text wx:if="{{t.course}}">{{t.course}}</text>
+          <text wx:if="{{t.platform}}" class="sep">·</text>
+          <text wx:if="{{t.platform}}">{{t.platform}}</text>
+        </view>
+        <view wx:if="{{t.url}}" class="hint link" bindtap="onOpenUrl" data-url="{{t.url}}">复制原链接</view>
+      </view>
+    </block>
+
+    <view wx:if="{{!total}}" class="empty">
+      <view class="empty-title">暂时没有待办</view>
+      <view>电脑端每天 08:00 和 20:00 会自动抓取学习平台的通知并同步到这里。</view>
+    </view>
+
+  </block>
+</view>

@@ -1,0 +1,114 @@
+/* 全局样式与配色。跟电脑端工作台保持同一套语义色：
+   橙 = 快到期/需注意，红 = 已过期，绿 = 正常。 */
+page {
+  --primary: #171717;
+  --primary-w: #efffc2;
+  --text: #171717;
+  --text-2: #464640;
+  --text-3: #62625b;
+  --border: #171717;
+  --surface: #ffffff;
+  --surface-2: #f7f6f0;
+  --orange: #e0720b;
+  --orange-w: #fdf1e3;
+  --red: #d64545;
+  --red-w: #fdecee;
+  --green: #0a7d3d;
+  --green-w: #e7f7ee;
+  --yellow: #c98a00;
+
+  background: var(--surface-2);
+  color: var(--text);
+  font-size: 28rpx;
+  line-height: 1.6;
+  font-family: -apple-system, "PingFang SC", "Helvetica Neue", sans-serif;
+}
+
+.wrap {
+  padding: 24rpx 24rpx 60rpx;
+}
+
+.card {
+  background: var(--surface);
+  border: 4rpx solid #171717;
+  border-radius: 20rpx;
+  padding: 28rpx;
+  margin-bottom: 28rpx;
+  box-shadow: 8rpx 8rpx 0 #171717;
+}
+
+.card-title {
+  font-size: 30rpx;
+  font-weight: 800;
+  margin-bottom: 8rpx;
+}
+
+.hint {
+  font-size: 24rpx;
+  color: var(--text-3);
+  line-height: 1.7;
+}
+
+.muted {
+  color: var(--text-2);
+}
+
+.badge {
+  display: inline-block;
+  font-size: 22rpx;
+  padding: 4rpx 14rpx;
+  border: 2rpx solid currentColor;
+  border-radius: 6rpx;
+  line-height: 1.5;
+}
+
+.b-ok { background: var(--green-w); color: var(--green); }
+.b-warn { background: #fdf6e0; color: var(--yellow); }
+.b-p2 { background: var(--orange-w); color: var(--orange); }
+.b-p1 { background: var(--red-w); color: var(--red); }
+.b-p3 { background: var(--surface-2); color: var(--text-3); }
+
+.btn {
+  display: block;
+  width: 100%;
+  padding: 22rpx;
+  border-radius: 16rpx;
+  font-size: 29rpx;
+  text-align: center;
+  background: var(--surface-2);
+  color: var(--text);
+  border: 4rpx solid #171717;
+  box-shadow: 6rpx 6rpx 0 #171717;
+  box-sizing: border-box;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.btn::after { border: none; }
+
+.btn-primary {
+  background: #c8fa16;
+  color: #171717;
+}
+
+.btn[disabled] {
+  opacity: 0.55;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.empty {
+  text-align: center;
+  padding: 90rpx 20rpx;
+  color: var(--text-3);
+}
+
+.empty-title {
+  font-size: 30rpx;
+  color: var(--text-2);
+  margin-bottom: 10rpx;
+}

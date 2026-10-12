@@ -1,0 +1,54 @@
+.bar { display: flex; align-items: center; justify-content: space-between; gap: 16rpx; }
+
+.acts { display: flex; gap: 22rpx; flex: none; }
+
+.act { font-size: 25rpx; color: var(--primary); }
+
+.msg { padding: 24rpx 26rpx; }
+
+.msg.is-read { background: var(--surface-2); }
+
+.msg.is-read .msg-title { color: var(--text-2); font-weight: 400; }
+
+.msg-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 12rpx;
+}
+
+.dot {
+  flex: none;
+  width: 14rpx;
+  height: 14rpx;
+  border-radius: 50%;
+  background: var(--red);
+  margin-top: 14rpx;
+}
+
+.msg-title {
+  flex: 1;
+  font-size: 29rpx;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.msg-summary {
+  margin-top: 8rpx;
+  font-size: 25rpx;
+  color: var(--text-2);
+  line-height: 1.6;
+}
+
+.msg-meta {
+  margin-top: 10rpx;
+  font-size: 23rpx;
+  color: var(--text-3);
+}
+
+.msg-meta .sep { padding: 0 8rpx; }
+
+.k-homework { background: var(--primary-w); color: var(--primary); }
+.k-exam { background: var(--red-w); color: var(--red); }
+.k-signup { background: var(--orange-w); color: var(--orange); }
+.k-social { background: #fdf6e0; color: var(--yellow); }
+.k-notice { background: var(--surface-2); color: var(--text-3); }

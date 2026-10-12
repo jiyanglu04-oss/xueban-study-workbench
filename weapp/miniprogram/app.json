@@ -1,0 +1,29 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/todos/todos",
+    "pages/notice/notice",
+    "pages/me/me"
+  ],
+  "window": {
+    "navigationBarTitleText": "学伴",
+    "navigationBarBackgroundColor": "#f7f6f0",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f7f6f0",
+    "backgroundTextStyle": "light"
+  },
+  "tabBar": {
+    "color": "#62625b",
+    "selectedColor": "#171717",
+    "backgroundColor": "#f7f6f0",
+    "borderStyle": "black",
+    "list": [
+      { "pagePath": "pages/index/index", "text": "待办" },
+      { "pagePath": "pages/todos/todos", "text": "全部" },
+      { "pagePath": "pages/me/me", "text": "我的" }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

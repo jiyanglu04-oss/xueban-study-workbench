@@ -1,0 +1,73 @@
+<view class="wrap">
+
+  <view wx:if="{{needEnv}}" class="card">
+    <view class="card-title">还差最后一步</view>
+    <view class="hint">去 miniprogram/config.js 填上云开发环境 ID 就能用了。</view>
+  </view>
+
+  <block wx:if="{{ready}}">
+
+    <!-- 绑定码：唯一需要「抄」到电脑上的东西 -->
+    <view class="card">
+      <view class="card-title">绑定码</view>
+      <view class="hint">
+        把这 4 位 + 4 位抄到电脑上的 <text class="mono">sync/push_config.json</text>，
+        电脑就知道该把待办推给谁了。只填一次。
+      </view>
+      <view class="code" bindtap="onCopyCode">
+        <text class="code-part">{{codeGroups[0]}}</text>
+        <text class="code-gap">·</text>
+        <text class="code-part">{{codeGroups[1]}}</text>
+      </view>
+      <view class="row-2">
+        <button class="btn btn-primary flex1" bindtap="onCopyCode">复制绑定码</button>
+        <button class="btn flex1" bindtap="onRenewCode">换一个</button>
+      </view>
+    </view>
+
+    <!-- 提醒额度：这是微信规则决定的，必须让用户看得见 -->
+    <view class="card {{quota < 3 ? 'alert-card' : ''}}">
+      <view class="card-title">提醒额度：{{quota}} 条</view>
+      <view class="hint">
+        微信规定个人小程序只能用「一次性订阅」：你点一次「允许」，我只能给你发一条。
+        所以每次打开小程序我都会悄悄补一次额度，点下面按钮也能补。
+      </view>
+      <view wx:if="{{!templateCount}}" class="hint warn-text mt">
+        还没配订阅模板 ID，填好 config.js 里的 TEMPLATE_IDS 才能用。
+      </view>
+      <button class="btn btn-primary mt" bindtap="onSubscribe">补充提醒额度</button>
+    </view>
+
+    <!-- 状态自检：出问题时一眼看出断在哪一环 -->
+    <view class="card">
+      <view class="card-title">现在的状态</view>
+      <view class="kv"><text class="k">未完成待办</text><text>{{pending}} 条</text></view>
+      <view class="kv">
+        <text class="k">电脑最近同步</text>
+        <text class="{{lastSyncStale ? 'tone-orange' : ''}}">{{lastSyncText}}</text>
+      </view>
+      <view class="kv"><text class="k">最近一次提醒</text><text>{{lastRemindText}}</text></view>
+      <view wx:if="{{lastSyncStale}}" class="hint warn-text mt">
+        电脑超过 36 小时没推数据了。检查工作台文件夹里的「一键同步数据.bat」是否还能正常跑，
+        或登录态是不是过期了（双击「重新登录.bat」）。
+      </view>
+    </view>
+
+    <!-- 折叠说明：不占地方，但需要时能查到 -->
+    <view class="card">
+      <view class="row" bindtap="toggleGuide">
+        <view class="card-title" style="margin:0">它是怎么工作的</view>
+        <view class="hint">{{showGuide ? '收起' : '展开'}}</view>
+      </view>
+      <view wx:if="{{showGuide}}" class="hint mt">
+        1. 你电脑上的工作台每天 08:00 和 20:00 自动抓一次学习平台的通知；<br/>
+        2. 抓到的待办被推到这个云端，手机上就能看到；<br/>
+        3. 云端每小时检查一次「24 小时内要到期」的待办，用微信服务通知提醒你；<br/>
+        4. 提醒的触发在云端，所以晚上电脑关机，第二天早上的提醒照样准。<br/>
+        <br/>
+        隐私方面：你的校园账号和密码从来没有离开过你的电脑，云端只存待办的标题、课程名和截止时间。
+      </view>
+    </view>
+
+  </block>
+</view>

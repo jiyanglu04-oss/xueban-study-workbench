@@ -1,0 +1,22 @@
+{
+  "miniprogramRoot": "miniprogram/",
+  "cloudfunctionRoot": "cloudfunctions/",
+  "projectname": "learning-workbench",
+  "description": "学伴 · 待办提醒小程序",
+  "appid": "touristappid",
+  "compileType": "miniprogram",
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "enhance": true,
+    "postcss": true,
+    "minified": false,
+    "nodeModules": false,
+    "checkInvalidKey": true
+  },
+  "condition": {
+    "miniprogram": {
+      "list": []
+    }
+  }
+}
