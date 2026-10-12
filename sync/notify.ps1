@@ -1,4 +1,4 @@
-param(
+﻿param(
     [string]$Payload
 )
 # Windows toast notifier. Deliberately ASCII-only so PowerShell 5.1
